@@ -24,39 +24,39 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        etBaseAmount = findViewById(R.id.etBaseAmount)
-        seekBarTip = findViewById(R.id.seekbarTip)
-        tvTipAmount = findViewById(R.id.tvTipAmount)
-        tvTipPercentLabel = findViewById(R.id.tvTipPercentLabel)
-        tvTotalAmount = findViewById(R.id.tvTotalAmount)
-        tvTipDescription = findViewById(R.id.tvTipDescription)
-
-        updateTipDescription(INITIAL_TIP_PERCENTAGE)
-        seekBarTip.progress = INITIAL_TIP_PERCENTAGE
-        tvTipPercentLabel.text = "${INITIAL_TIP_PERCENTAGE}%"
-        seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvTipPercentLabel.text = "${p1}%"
-                calculateTip()
-                updateTipDescription(p1)
-            }
-
-            override fun onStartTrackingTouch(p0: SeekBar?) {}
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {}
-
-        })
-
-        etBaseAmount.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {
-                calculateTip()
-            }
-        })
+        setContentView(R.layout.activity_main_new)
+//        etBaseAmount = findViewById(R.id.etBaseAmount)
+//        seekBarTip = findViewById(R.id.seekbarTip)
+//        tvTipAmount = findViewById(R.id.tvTipAmount)
+//        tvTipPercentLabel = findViewById(R.id.tvTipPercentLabel)
+//        tvTotalAmount = findViewById(R.id.tvTotalAmount)
+//        tvTipDescription = findViewById(R.id.tvTipDescription)
+//
+//        updateTipDescription(INITIAL_TIP_PERCENTAGE)
+//        seekBarTip.progress = INITIAL_TIP_PERCENTAGE
+//        tvTipPercentLabel.text = "${INITIAL_TIP_PERCENTAGE}%"
+//        seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+//            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+//                tvTipPercentLabel.text = "${p1}%"
+//                calculateTip()
+//                updateTipDescription(p1)
+//            }
+//
+//            override fun onStartTrackingTouch(p0: SeekBar?) {}
+//
+//            override fun onStopTrackingTouch(p0: SeekBar?) {}
+//
+//        })
+//
+//        etBaseAmount.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                calculateTip()
+//            }
+//        })
     }
 
     private fun updateTipDescription(tipPercent:Int) {
