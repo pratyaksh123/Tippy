@@ -6,32 +6,40 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 
 private const val TAG = "MainActivity"
 private const val INITIAL_TIP_PERCENTAGE = 15
 
 class MainActivity : AppCompatActivity() {
     private lateinit var etBaseAmount: EditText
-    private lateinit var seekBarTip: SeekBar
-    private lateinit var tvTipPercentLabel: TextView
     private lateinit var tvTipAmount: TextView
     private lateinit var tvTotalAmount: TextView
-    private lateinit var tvTipDescription: TextView
+    private lateinit var tvPercentSelectedLabel: TextView
+    private lateinit var tvPercentSelected: TextView
+    private lateinit var button1:Button
+    private lateinit var button2:Button
+    private lateinit var button3:Button
+    private lateinit var customTipButton:Button
+//    private lateinit var tvTipDescription: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_new)
-//        etBaseAmount = findViewById(R.id.etBaseAmount)
-//        seekBarTip = findViewById(R.id.seekbarTip)
-//        tvTipAmount = findViewById(R.id.tvTipAmount)
-//        tvTipPercentLabel = findViewById(R.id.tvTipPercentLabel)
-//        tvTotalAmount = findViewById(R.id.tvTotalAmount)
-//        tvTipDescription = findViewById(R.id.tvTipDescription)
-//
+        etBaseAmount = findViewById(R.id.etBaseAmount)
+        tvTipAmount = findViewById(R.id.tvTipAmount)
+        tvTotalAmount = findViewById(R.id.tvTotalAmount)
+        tvPercentSelectedLabel = findViewById(R.id.tvPercentSelectedLabel)
+        tvPercentSelected = findViewById(R.id.tvPercentSelected)
+        button1 = findViewById(R.id.button1)
+        button2 = findViewById(R.id.button2)
+        button3 = findViewById(R.id.button3)
+
 //        updateTipDescription(INITIAL_TIP_PERCENTAGE)
 //        seekBarTip.progress = INITIAL_TIP_PERCENTAGE
 //        tvTipPercentLabel.text = "${INITIAL_TIP_PERCENTAGE}%"
@@ -48,15 +56,33 @@ class MainActivity : AppCompatActivity() {
 //
 //        })
 //
-//        etBaseAmount.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                calculateTip()
-//            }
-//        })
+        etBaseAmount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                calculateTip()
+            }
+        })
+
+        button1.setOnClickListener{
+            tvPercentSelectedLabel.isVisible = true
+            tvPercentSelected.isVisible = true
+            tvPercentSelected.text = "10%"
+        }
+
+        button2.setOnClickListener{
+            tvPercentSelectedLabel.isVisible = true
+            tvPercentSelected.isVisible = true
+            tvPercentSelected.text = "15%"
+        }
+
+        button3.setOnClickListener{
+            tvPercentSelectedLabel.isVisible = true
+            tvPercentSelected.isVisible = true
+            tvPercentSelected.text = "20%"
+        }
     }
 
     private fun updateTipDescription(tipPercent:Int) {
@@ -67,27 +93,27 @@ class MainActivity : AppCompatActivity() {
             in 20..24 -> "Great"
             else -> "Amazing!"
         }
-        tvTipDescription.text = tipDesc
+//        tvTipDescription.text = tipDesc
         // Update the tip based on tipPercent
-        val color = ArgbEvaluator().evaluate((tipPercent.toFloat() / seekBarTip.max),
-            ContextCompat.getColor(this, R.color.bestTip),
-            ContextCompat.getColor(this, R.color.worstTip)) as Int
+//        val color = ArgbEvaluator().evaluate((tipPercent.toFloat() / seekBarTip.max),
+//            ContextCompat.getColor(this, R.color.bestTip),
+//            ContextCompat.getColor(this, R.color.worstTip)) as Int
 
-        Log.i(TAG, "$color")
-        tvTipDescription.setTextColor(color)
+//        Log.i(TAG, "$color")
+//        tvTipDescription.setTextColor(color)
     }
 
     private fun calculateTip() {
         if (etBaseAmount.text.isNullOrBlank()) {
-            tvTipAmount.text = ""
-            tvTotalAmount.text = ""
+            tvTipAmount.text = "$000"
+            tvTotalAmount.text = "$000"
             return
         }
         val baseAmount = etBaseAmount.text.toString().toDouble()
-        val tipPercent = seekBarTip.progress.toDouble()
-        val tip = (baseAmount * (tipPercent / 100))
-        val tipTotal = tip + baseAmount
-        tvTipAmount.text = String.format("$%.2f", tip)
-        tvTotalAmount.text = String.format("$%.2f", tipTotal)
+//        val tipPercent = seekBarTip.progress.toDouble()
+//        val tip = (baseAmount * (tipPercent / 100))
+//        val tipTotal = tip + baseAmount
+//        tvTipAmount.text = String.format("$%.2f", tip)
+//        tvTotalAmount.text = String.format("$%.2f", tipTotal)
     }
 }
