@@ -1,16 +1,17 @@
 package com.example.tipcalculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-
-private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var etBaseAmount: EditText
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         subtractButton = findViewById(R.id.subtractButton)
         tvPersonsSplit = findViewById(R.id.tvPersonsSplit)
         tvTotalAmountPerPerson = findViewById(R.id.tvTotalAmountPerPerson)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
 
         etBaseAmount.addTextChangedListener(object : TextWatcher {
@@ -77,7 +79,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         customTipButton.setOnClickListener {
-            // TODO: Implement a model to ask for custom tip %
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("Enter the tip in percent")
+            val input = EditText(this)
+            input.inputType = InputType.TYPE_CLASS_NUMBER
+            alert.setView(input)
+
+            alert.setPositiveButton(
+                "Ok"
+            ) { _, _ ->
+                val value = input.text
+                tvPercentSelected.text = value.toString() + "%"
+                calculateTip()
+            }
+
+            alert.setNegativeButton(
+                "Cancel"
+            ) { _, _ -> }
+
+            alert.show()
         }
 
         plusButton.setOnClickListener {
