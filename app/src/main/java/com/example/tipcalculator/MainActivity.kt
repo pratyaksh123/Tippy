@@ -90,8 +90,10 @@ class MainActivity : AppCompatActivity() {
                 "Ok"
             ) { _, _ ->
                 val value = input.text
-                tvPercentSelected.text = value.toString() + "%"
-                calculateTip()
+                if(!value.isNullOrBlank()){
+                    tvPercentSelected.text = value.toString() + "%"
+                    calculateTip()
+                }
             }
 
             alert.setNegativeButton(
