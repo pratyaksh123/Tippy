@@ -6,4 +6,5 @@
     <string name="money_image">Money Image</string>
     <string name="total_bill">Total Bill</string>
     <string name="total_tip">Total Tip</string>
+    <string name="_000">000</string>
 </resources>
