@@ -1,4 +1,4 @@
-package com.example.tipcalculator
+package com.tippy.tipcalculator
 
 import android.os.Bundle
 import android.text.Editable
