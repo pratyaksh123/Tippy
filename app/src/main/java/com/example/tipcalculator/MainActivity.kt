@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTotalAmountPerPerson: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         etBaseAmount = findViewById(R.id.etBaseAmount)
@@ -44,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         subtractButton = findViewById(R.id.subtractButton)
         tvPersonsSplit = findViewById(R.id.tvPersonsSplit)
         tvTotalAmountPerPerson = findViewById(R.id.tvTotalAmountPerPerson)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
 
         etBaseAmount.addTextChangedListener(object : TextWatcher {
