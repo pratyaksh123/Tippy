@@ -3,4 +3,7 @@
     <string name="appName">Tippy</string>
     <string name="Totalpersons">Total p/person</string>
     <string name="DialogTitle">Enter number of persons</string>
+    <string name="money_image">Money Image</string>
+    <string name="total_bill">Total Bill</string>
+    <string name="total_tip">Total Tip</string>
 </resources>
