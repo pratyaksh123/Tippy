@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
@@ -90,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                 "Ok"
             ) { _, _ ->
                 val value = input.text
-                if(!value.isNullOrBlank()){
+                if (!value.isNullOrBlank()) {
                     tvPercentSelected.text = value.toString() + "%"
                     calculateTip()
                 }
@@ -117,12 +116,34 @@ class MainActivity : AppCompatActivity() {
             calculateTip()
         }
     }
+    
+    private fun resetField(){
+        tvTipAmount.text = "$000"
+        tvTotalAmount.text = "$000"
+        tvTotalAmountPerPerson.text = "000"
+    }
 
     private fun calculateTip() {
+        // Special Char check
+        val matches = arrayOf(",", "-", "..")
+        var foundSpecialChars = false
+        var temp = etBaseAmount.text.toString().replace(" ","")
+
+        for (s in matches) {
+            if (temp.contains(s) || temp == ".") {
+                foundSpecialChars = true
+            }
+        }
+        
+        if(foundSpecialChars){
+            Toast.makeText(this, "Special Characters are not allowed bitch!", Toast.LENGTH_SHORT).show()
+            resetField()
+            etBaseAmount.text.clear()
+            return
+        }
+        
         if (etBaseAmount.text.isNullOrBlank()) {
-            tvTipAmount.text = "$000"
-            tvTotalAmount.text = "$000"
-            tvTotalAmountPerPerson.text = "000"
+            resetField()
             return
         }
         val baseAmount = etBaseAmount.text.toString().toDouble()

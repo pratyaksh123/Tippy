@@ -193,7 +193,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="40dp"
-            android:background="?attr/colorOnPrimary"
+            android:background="@drawable/rounded_box"
             android:elevation="1dp"
             android:ems="10"
             android:hint="$"
