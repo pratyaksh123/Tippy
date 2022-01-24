@@ -7,4 +7,5 @@
     <string name="total_bill">Total Bill</string>
     <string name="total_tip">Total Tip</string>
     <string name="_000">000</string>
+    <string name="SpecCharWarning">Special characters are not allowed!</string>
 </resources>

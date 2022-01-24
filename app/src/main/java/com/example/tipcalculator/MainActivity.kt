@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         }
         
         if(foundSpecialChars){
-            Toast.makeText(this, "Special Characters are not allowed bitch!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.SpecCharWarning), Toast.LENGTH_SHORT).show()
             resetField()
             etBaseAmount.text.clear()
             return
