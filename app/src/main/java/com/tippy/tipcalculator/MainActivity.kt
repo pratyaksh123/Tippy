@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.tippy.tipcalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var etBaseAmount: EditText
@@ -27,24 +28,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var subtractButton: Button
     private lateinit var tvPersonsSplit: TextView
     private lateinit var tvTotalAmountPerPerson: TextView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        etBaseAmount = findViewById(R.id.etBaseAmount)
-        tvTipAmount = findViewById(R.id.tvTipAmount)
-        tvTotalAmount = findViewById(R.id.tvTotalAmount)
-        tvPercentSelectedLabel = findViewById(R.id.tvPercentSelectedLabel)
-        tvPercentSelected = findViewById(R.id.tvPercentSelected)
-        button1 = findViewById(R.id.button1)
-        button2 = findViewById(R.id.button2)
-        button3 = findViewById(R.id.button3)
-        customTipButton = findViewById(R.id.customTipButton)
-        plusButton = findViewById(R.id.plusButton)
-        subtractButton = findViewById(R.id.subtractButton)
-        tvPersonsSplit = findViewById(R.id.tvPersonsSplit)
-        tvTotalAmountPerPerson = findViewById(R.id.tvTotalAmountPerPerson)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        etBaseAmount = binding.etBaseAmount
+        tvTipAmount = binding.tvTipAmount
+        tvTotalAmount = binding.tvTotalAmount
+        tvPercentSelectedLabel = binding.tvPercentSelectedLabel
+        tvPercentSelected = binding.tvPercentSelected
+        button1 = binding.button1
+        button2 = binding.button2
+        button3 = binding.button3
+        customTipButton = binding.customTipButton
+        plusButton = binding.plusButton
+        subtractButton = binding.subtractButton
+        tvPersonsSplit = binding.tvPersonsSplit
+        tvTotalAmountPerPerson = binding.tvTotalAmountPerPerson
 
 
         etBaseAmount.addTextChangedListener(object : TextWatcher {
